@@ -22,7 +22,7 @@ public class UhuEstouNogit {
     {
         
     }
-    public clas LauraGIT
+    public class LauraGIT
             {
                 
             }
