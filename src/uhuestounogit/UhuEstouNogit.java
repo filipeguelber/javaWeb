@@ -18,4 +18,8 @@ public class UhuEstouNogit {
         
         // TODO code application logic here
     }
+    public class Laura
+    {
+        
+    }
 }
