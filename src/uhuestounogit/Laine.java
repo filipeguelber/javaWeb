@@ -12,4 +12,6 @@ public class Laine {
     public String getNome(){
         return nome;
     }
+    //Laine sua chata
+    //feiosa
 }
