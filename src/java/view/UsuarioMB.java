@@ -22,7 +22,7 @@ import model.Usuario;
  * @author Administrador
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UsuarioMB {
 
     /**
