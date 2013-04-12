@@ -7,6 +7,9 @@ package view;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,8 +21,8 @@ import model.Usuario;
  *
  * @author Administrador
  */
-@Named(value = "usuarioMB")
-@RequestScoped
+@ManagedBean
+@ViewScoped
 public class UsuarioMB {
 
     /**
@@ -41,12 +44,12 @@ public class UsuarioMB {
         this.usuario = usuario;
     }
 
-    public String salvar() {
+    public void salvar() {
 
         em.getTransaction().begin();
-        em.persist(usuario);
+        System.out.println("ID="+usuario.getId());
+        em.merge(usuario);
         em.getTransaction().commit();
-        return "listaUsuario";
     }
 
     public List<Usuario> findAll() {
@@ -55,16 +58,19 @@ public class UsuarioMB {
         return query.getResultList();
     }
 
-    public String apaga(Usuario usuario) {
+    public void apaga(Usuario usuario) {
 
         System.out.println("Vou apagar o usuario " + usuario.getNome() + " id=" + usuario.getId());
         em.getTransaction().begin();
         em.remove(usuario);
         em.getTransaction().commit();
-        return "listaUsuario";
+    }
+    
+    public void editar(Usuario usuario){
+       
+        System.out.println("Editei="+usuario.getId());
+        this.usuario = usuario;
     }
 
-    public String cadastro() {
-        return "cadastroUsuario";
-    }
+
 }
