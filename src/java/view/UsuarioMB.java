@@ -4,16 +4,14 @@
  */
 package view;
 
+import controller.UsuarioEJB;
 import java.util.List;
-import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Usuario;
 
@@ -30,6 +28,9 @@ public class UsuarioMB {
      */
     EntityManager em;
     private Usuario usuario = new Usuario();
+    
+    @EJB
+    UsuarioEJB usuarioEJB;
 
     public UsuarioMB() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Jpa01AbrPU");
@@ -45,11 +46,7 @@ public class UsuarioMB {
     }
 
     public void salvar() {
-
-        em.getTransaction().begin();
-        System.out.println("ID="+usuario.getId());
-        em.merge(usuario);
-        em.getTransaction().commit();
+        usuarioEJB.salvar(usuario);
     }
 
     public List<Usuario> findAll() {
@@ -65,12 +62,10 @@ public class UsuarioMB {
         em.remove(usuario);
         em.getTransaction().commit();
     }
-    
-    public void editar(Usuario usuario){
-       
-        System.out.println("Editei="+usuario.getId());
+
+    public void editar(Usuario usuario) {
+
+        System.out.println("Editei=" + usuario.getId());
         this.usuario = usuario;
     }
-
-
 }
