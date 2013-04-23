@@ -15,36 +15,24 @@ import javax.persistence.Id;
  * @author Administrador
  */
 @Entity
-public class Usuario implements Serializable {
+public class Setor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private String nome;
-    
-    private String sexo;
 
-    public String getSexo() {
-        return sexo;
+    private String descricao;
+
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
     
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
     
-    
-
     public Long getId() {
         return id;
     }
@@ -63,10 +51,10 @@ public class Usuario implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
+        if (!(object instanceof Setor)) {
             return false;
         }
-        Usuario other = (Usuario) object;
+        Setor other = (Setor) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -75,7 +63,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Pessoa[ id=" + id + " ]";
+        return "model.Setor[ id=" + id + " ]";
     }
     
 }
