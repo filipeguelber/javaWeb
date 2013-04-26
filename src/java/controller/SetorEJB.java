@@ -4,9 +4,11 @@
  */
 package controller;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.Setor;
 
 /**
@@ -24,6 +26,13 @@ public class SetorEJB {
     
     public void salvar(Setor setor){
         em.merge(setor);
+    }
+    
+    public List<Setor> findAll(){
+        Query query = em.createQuery("SELECT s FROM Setor s");
+        return query.getResultList();
+          //Outra forma possivel:
+        //        return em.createQuery("SELECT s FROM Setor s").getResultList();
     }
     
 

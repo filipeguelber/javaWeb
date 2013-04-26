@@ -24,6 +24,7 @@ public class Usuario implements Serializable {
     private String nome;
     
     private String sexo;
+    
 
     public String getSexo() {
         return sexo;

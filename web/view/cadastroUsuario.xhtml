@@ -14,10 +14,7 @@
             <br/>
             <h:outputLabel value="Selecione o sexo:"/>
             <p:selectOneMenu value="#{usuarioMB.usuario.sexo}">
-                <f:selectItem itemLabel="M" itemValue="M"/>
-                <f:selectItem itemLabel="F" itemValue="F"/>
-                
-                              
+                <f:selectItems value="#{setorMB.findAll()}" var="setor" itemLabel="#{setor.descricao}" itemValue="#{setor.id}"/>
             </p:selectOneMenu>
            
             <p:commandButton value="Salvar" action="#{usuarioMB.salvar()}" ajax="false"/>

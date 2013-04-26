@@ -7,6 +7,7 @@ package view;
 import controller.SetorEJB;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -47,5 +48,10 @@ public class SetorMB implements Serializable {
         System.out.println("Salvando setor="+setor.getDescricao());
         setorEJB.salvar(setor);
     }
+    
+    public List<Setor> findAll(){
+        return setorEJB.findAll();
+    }
+    
     
 }
