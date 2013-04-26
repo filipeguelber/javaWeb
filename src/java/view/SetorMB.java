@@ -8,6 +8,7 @@ import controller.SetorEJB;
 import javax.inject.Named;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import model.Setor;
 
@@ -15,22 +16,24 @@ import model.Setor;
  *
  * @author Administrador
  */
-@Named(value = "setorMB")
+@ManagedBean
 @ViewScoped
 public class SetorMB implements Serializable {
 
     @EJB
     SetorEJB setorEJB;
-    
+    private Setor setor;
     
     /**
      * Creates a new instance of SetorMB
      */
     public SetorMB() {
+        System.out.println("Criei um novo setorMB");
+        setor = new Setor();
     }
     
     
-    private Setor setor = new Setor();
+    
 
     public Setor getSetor() {
         return setor;
@@ -41,6 +44,7 @@ public class SetorMB implements Serializable {
     }
     
     public void salvar(){
+        System.out.println("Salvando setor="+setor.getDescricao());
         setorEJB.salvar(setor);
     }
     
