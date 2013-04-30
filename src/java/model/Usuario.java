@@ -25,6 +25,26 @@ public class Usuario implements Serializable {
     
     private String sexo;
     
+    private Setor setor;
+
+    public Usuario() {
+        setor = new Setor();
+    }
+
+    
+    
+    
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
+    
+    
+    
+    
 
     public String getSexo() {
         return sexo;

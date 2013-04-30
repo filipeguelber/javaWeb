@@ -13,7 +13,7 @@
             <p:inputText value="#{usuarioMB.usuario.nome}"/>
             <br/>
             <h:outputLabel value="Selecione o sexo:"/>
-            <p:selectOneMenu value="#{usuarioMB.usuario.sexo}">
+            <p:selectOneMenu value="#{usuarioMB.usuario.setor.id}">
                 <f:selectItems value="#{setorMB.findAll()}" var="setor" itemLabel="#{setor.descricao}" itemValue="#{setor.id}"/>
             </p:selectOneMenu>
            
