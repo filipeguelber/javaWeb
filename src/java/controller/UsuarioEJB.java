@@ -20,7 +20,7 @@ public class UsuarioEJB {
     // "Insert Code > Add Business Method")
     @PersistenceContext
     EntityManager em;
-
+    
     public void salvar(Usuario usuario) {
         System.out.println("ID=" + usuario.getId());
         em.merge(usuario);
