@@ -5,6 +5,7 @@
 package view;
 
 import controller.UsuarioEJB;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -12,7 +13,6 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import model.Usuario;
 
 /**
@@ -51,8 +51,7 @@ public class UsuarioMB {
 
     public List<Usuario> findAll() {
 
-        Query query = em.createQuery("select u from Usuario u");
-        return query.getResultList();
+      return usuarioEJB.findAll();
     }
 
     public void apaga(Usuario usuario) {
@@ -68,4 +67,10 @@ public class UsuarioMB {
         System.out.println("Editei=" + usuario.getId());
         this.usuario = usuario;
     }
+    
+     public List<String> complete(String query) {  
+        return usuarioEJB.findByName(query);
+     }
+    
+    
 }

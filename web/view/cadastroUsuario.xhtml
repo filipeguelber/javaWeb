@@ -12,10 +12,13 @@
             <h:outputLabel value="Digite o nome:"/>
             <p:inputText value="#{usuarioMB.usuario.nome}"/>
             <br/>
-            <h:outputLabel value="Selecione o sexo:"/>
+            <h:outputLabel value="Selecione o setor"/>
             <p:selectOneMenu value="#{usuarioMB.usuario.setor.id}">
                 <f:selectItems value="#{setorMB.findAll()}" var="setor" itemLabel="#{setor.descricao}" itemValue="#{setor.id}"/>
             </p:selectOneMenu>
+            
+            <p:autoComplete id="setor" value="#{usuarioMB.usuario.sexo}"   
+                            completeMethod="#{usuarioMB.complete}"/>  
            
             <p:commandButton value="Salvar" action="#{usuarioMB.salvar()}" ajax="false"/>
             
@@ -28,6 +31,9 @@
                     </p:column>
                     <p:column headerText="NOME" >
                         <h:outputLabel value="#{usuario.nome}"/>
+                    </p:column>
+                    <p:column headerText="SETOR" >
+                        <h:outputLabel value="#{usuario.setor.descricao}"/>
                     </p:column>
                     <p:column>
                         <p:commandButton value="Apagar" action="#{usuarioMB.apaga(usuario)}" ajax="false"/>
